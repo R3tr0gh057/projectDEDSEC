@@ -46,7 +46,7 @@ async def ban(ctx, member : discord.Member,*,reason="No reason provided"):
         if guild.name == GUILD:
             break
     try:
-        await ctx.channel.send(member.display_name+" has been kicked from "+guild.name)
+        await ctx.channel.send(member.display_name+" has been banned from "+guild.name)
         await member.kick(reason=reason)
     except:
         ctx.channel.send('You dont have the perms to do that')

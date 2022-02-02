@@ -120,27 +120,27 @@ async def unmute(ctx, member : discord.Member):
 @ban.error
 async def ban_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        await ctx.message.send("You dont have the perms to ban members")
+        await ctx.channel.send("You dont have the perms to ban members")
 
 @kick.error
 async def kick_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        await ctx.message.send("You dont have the perms to kick members")
+        await ctx.channel.send("You dont have the perms to kick members")
 
 @unban.error
 async def unban_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        await ctx.message.send("You dont have the perms to unban members")
+        await ctx.channel.send("You dont have the perms to unban members")
 
 @mute.error
 async def mute_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        await ctx.message.send("You dont have the perms to mute members")
+        await ctx.channel.send("You dont have the perms to mute members")
 
 @unmute.error
 async def unban_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        await ctx.message.send("You dont have the perms to unmute members")
+        await ctx.channel.send("You dont have the perms to unmute members")
 
 #exception handling end
 

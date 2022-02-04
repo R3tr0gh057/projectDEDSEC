@@ -34,18 +34,6 @@ async def on_message_delete(ctx):
         msg = f'{ctx.author} has deleted the message: {ctx.content}'
         await ctx.channel.send(msg)
 
-#potato flagger
-'''flag=['potat','potato']
-@client.event
-async def on_message(ctx):
-    msg=ctx.content
-    lower=msg.lower()
-    for word in flag:
-        if word in lower:
-            await ctx.delete()
-            await ctx.channel.send('haha no')
-    await client.process_commands()'''
-
 @client.command(name='ping', help='Returns the client latency.')
 async def ping(ctx):
     await ctx.channel.send(f'Client latency: {round(client.latency*1000)}ms')

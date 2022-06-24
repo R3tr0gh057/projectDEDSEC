@@ -1,4 +1,5 @@
 import os
+from turtle import title
 from discord.ext import commands
 import discord
 from dotenv import load_dotenv
@@ -35,14 +36,17 @@ async def on_message_delete(ctx):
         msg = f'{ctx.author} has deleted the message: {ctx.content}'
         await ctx.channel.send(msg)
 
+#client latency check
 @client.command(name='ping', help='Returns the client latency.')
 async def ping(ctx):
     await ctx.channel.send(f'Client latency: {round(client.latency*1000)}ms')
 
-@client.command(name='clear', help='Clears (x) amount of messages.')
-async def clear(ctx, amount: int):
+#purge command
+@client.command(name='purge', help='Clears (x) amount of messages.')
+async def purge(ctx, amount: int):
     await ctx.channel.purge(limit=amount)
 
+#ban command
 @client.command(name='ban', help='Ban someone for breaking a rule/other reasons')
 @commands.has_permissions(ban_members = True)
 async def ban(ctx, member : discord.Member,*,reason="No reason provided"):
@@ -56,6 +60,7 @@ async def ban(ctx, member : discord.Member,*,reason="No reason provided"):
     except:
         print(member.name+" is not accepting dms")
 
+#kick command
 @client.command(name='kick', help='kick someone for breaking a rule/other reasons')
 @commands.has_permissions(kick_members = True)
 async def kick(ctx, member : discord.Member,*,reason="No reason provided"):
@@ -69,6 +74,7 @@ async def kick(ctx, member : discord.Member,*,reason="No reason provided"):
     except:
         print(member.display_name+" is not accepting dms")
 
+#unban command
 @client.command(name='unban', help='unban a banned member')
 @commands.has_permissions(ban_members = True)
 async def unban(ctx,*,member):
@@ -90,6 +96,7 @@ async def unban(ctx,*,member):
     except:
         print(member.display_name+" is not accepting dms")
 
+#mute command
 @client.command(name='mute', help='mute a member')
 @commands.has_permissions(kick_members = True)
 async def mute(ctx, member : discord.Member):
@@ -97,6 +104,7 @@ async def mute(ctx, member : discord.Member):
     await member.add_roles(muted_role)
     await ctx.channel.send(member.mention+' has been muted')
 
+#unmute command
 @client.command(name='unmute', help='unmute a member')
 @commands.has_permissions(kick_members = True)
 async def unmute(ctx, member : discord.Member):

